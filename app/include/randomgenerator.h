@@ -12,7 +12,7 @@ class RandomGenerator
    std::uniform_int_distribution<int> distribution;
 public:
     RandomGenerator();
-    int randomInt();
+    virtual int randomInt();
     void setBounderies(int newLower, int newUpper);
 };
 
