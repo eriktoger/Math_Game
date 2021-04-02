@@ -4,21 +4,18 @@
 ImageInfo::ImageInfo() : shown(QVector<bool>(9)) {
     shownCounter = 0;
     imageDone = false;
-    urlReaderPtr = std::make_shared<UrlReader>();
     randomGeneratorPtr = std::make_shared<RandomGenerator>();
-}
-
-void ImageInfo::setUrlReader(std::shared_ptr<UrlReader> urPtr) {
-    urlReaderPtr = urPtr;
 }
 
 void ImageInfo::setRandomGenerator(std::shared_ptr<RandomGenerator> rgPtr) {
     randomGeneratorPtr = rgPtr;
 }
 
-void ImageInfo::initializeUrls() {
-    urlReaderPtr->loadUrls();
-    urls = urlReaderPtr->getUrls();
+void ImageInfo::addUrl( std::string newUrl) {
+    urls.emplace_back(newUrl);
+}
+
+void ImageInfo::setRandomUrl(){
     int upperLimit = urls.size() > 0 ? urls.size() - 1 : 0;
     randomGeneratorPtr->setBounderies(0, upperLimit);
     int randomImageIndex = randomGeneratorPtr->randomInt();

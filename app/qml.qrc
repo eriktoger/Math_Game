@@ -1,19 +1,18 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
-        <file>Cell.qml</file>
-        <file>images/icons/Icon_Simple_Error.png</file>
-        <file>images/icons/greenCheckMark.png</file>
-        <file>images/quiz/kitten1.jpg</file>
-        <file>images/quiz/owl.jpg</file>
-        <file>QuestionText.qml</file>
-        <file>Filter.qml</file>
-        <file>AnswerBox.qml</file>
-        <file>Counter.qml</file>
-        <file>Game.qml</file>
-        <file>Options.qml</file>
-        <file>images/quiz/penguins.jpg</file>
-        <file>images/quiz/panda.jpg</file>
-        <file>images/quiz/seal.jpg</file>
+        <file>resources/main.qml</file>
+        <file>resources/images/icons/Icon_Simple_Error.png</file>
+        <file>resources/images/icons/greenCheckMark.png</file>
+        <file>resources/images/quiz/kitten1.jpg</file>
+        <file>resources/images/quiz/owl.jpg</file>
+        <file>resources/QuestionText.qml</file>
+        <file>resources/Filter.qml</file>
+        <file>resources/AnswerBox.qml</file>
+        <file>resources/Counter.qml</file>
+        <file>resources/Game.qml</file>
+        <file>resources/Options.qml</file>
+        <file>resources/images/quiz/penguins.jpg</file>
+        <file>resources/images/quiz/panda.jpg</file>
+        <file>resources/images/quiz/seal.jpg</file>
     </qresource>
 </RCC>

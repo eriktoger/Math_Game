@@ -5,33 +5,34 @@
 #include "../include/question.h"
 #include "../include/randomgenerator.h"
 #include <memory>
-int main(int argc, char *argv[])
-{
+#include <QDir>
+
+int main(int argc, char *argv[]) {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
-
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
-    QQmlContext* context = engine.rootContext();
+    QQmlContext *context = engine.rootContext();
 
+    engine.addImportPath(":/resources");
+
+    QDir dir(":/resources/images/quiz");
     auto *imageInfo = new ImageInfo;
-    imageInfo->initializeUrls();
+    QFileInfoList list = dir.entryInfoList();
 
-    context->setContextProperty("imageInfo",imageInfo);
+    for (auto &fileInfo : list) {
+        std::string url = "images/quiz/" + fileInfo.fileName().toStdString();
+        imageInfo->addUrl(url);
+    }
+    imageInfo->setRandomUrl();
+    context->setContextProperty("imageInfo", imageInfo);
 
     //instead of //import io.qt.examples.question 1.0
-    qmlRegisterType<Question>("Question", 1,0, "Question");
-    std::cout << app.applicationDirPath().toStdString()<<std::endl;
-    engine.addImportPath(app.applicationDirPath() + "/include");
-    const QUrl url(QStringLiteral("qml/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
+    qmlRegisterType<Question>("Question", 1, 0, "Question");
 
-    engine.load(url);
+    engine.addImportPath(app.applicationDirPath() + "/include");
+    engine.load(QUrl(QStringLiteral("qrc:/resources/main.qml")));
 
     return app.exec();
 }

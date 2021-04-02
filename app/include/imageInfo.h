@@ -8,7 +8,6 @@
 #include <filesystem>
 #include <memory>
 #include "randomgenerator.h"
-#include "urlreader.h"
 
 class ImageInfo : public QObject {
 Q_OBJECT
@@ -24,7 +23,6 @@ private:
     std::vector<std::string> urls;
     unsigned shownCounter;
     bool imageDone;
-    std::shared_ptr<UrlReader> urlReaderPtr;
     std::shared_ptr<RandomGenerator> randomGeneratorPtr;
 
 
@@ -36,8 +34,6 @@ public:
     void setUrl(QString newUrl);
 
     Q_INVOKABLE unsigned getUrlsSize();
-
-    virtual void setUrlReader(std::shared_ptr<UrlReader> urlReaderPtr);
 
     void setRandomGenerator(std::shared_ptr<RandomGenerator> rgPtr);
 
@@ -55,7 +51,9 @@ public:
 
     void setImageDone(bool newStatus);
 
-    void initializeUrls();
+    void addUrl( std::string url);
+
+    void setRandomUrl();
 
 
 public slots:

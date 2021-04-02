@@ -15,7 +15,7 @@ find_package(Qt6 COMPONENTS Core Qml Quick Test REQUIRED)
 set( proj_HEADER
         ../app/include/imageInfo.h
         MockRandomGenerator.h)
-add_executable(InfoImage imageInfoTests.cpp ../app/src/imageInfo.cpp ../app/src/urlreader.cpp ../app/src/randomgenerator.cpp ${proj_HEADER})
+add_executable(InfoImage imageInfoTests.cpp ../app/src/imageInfo.cpp ../app/src/randomgenerator.cpp ${proj_HEADER})
 #set_target_properties(InfoImage  PROPERTIES AUTOMOC TRUE)
 
 #add_library(InfoImage SHARED "../QT_helloworld/imageInfo.h" "../QT_helloworld/imageInfo.cpp" )
